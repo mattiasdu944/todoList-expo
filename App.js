@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
 
-export default function App() {
+import { SafeAreaView, ScrollView, StyleSheet, View, Text } from 'react-native';
+import Formulario from './components/Formulario';
+import Header from './components/Header';
+
+// COMPONENTES
+
+const App = () => {
+  const [tareas, setTareas] = useState([]);
+  const [tarea, setTarea] = useState({});
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    console.log('tareas'),
+    <ScrollView style={{ backgroundColor: '#1B2223', flex: 1, }}>
+
+      <View style={styles.body}>
+        <View style={styles.container}>
+          <Header />
+
+          <Formulario
+            tarea={tarea}
+            setTarea={setTarea}
+          />
+
+        </View>
+      </View>
+
+    </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+  body: {
     justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 35,
+  },
+  container: {
+    width: '90%',
   },
 });
+
+export default App;
